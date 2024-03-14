@@ -27,7 +27,7 @@ describe("Juice-shop scenarios", () => {
       HomePage.profileMenuOption.should("contain", "demo");
     });
 
-    it.only("Registration", () => {
+    it("Registration", () => {
       // Click Account button
       HomePage.accountButton.click();
       // Login button
@@ -70,9 +70,12 @@ describe("Juice-shop scenarios", () => {
       HomePage.visit();
     });
 
-    it("Search and validate Lemon", () => {
+    it.only("Search and validate Lemon", () => {
       // Click on search icon
+      HomePage.searchQuery.click();
       // Search for Lemon
+      HomePage.inputInSearchQuery.type("Lemon");
+      cy.get('input').type('{enter}');
       // Select a product card - Lemon Juice (500ml)
       // Validate that the card (should) contains "Sour but full of vitamins."
     });

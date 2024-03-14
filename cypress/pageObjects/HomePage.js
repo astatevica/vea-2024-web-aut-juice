@@ -25,5 +25,13 @@ export class HomePage extends BasePage {
     return cy.get("button[aria-label='Go to user profile']");
   }
 
+  static get searchQuery(){
+    return cy.get("#searchQuery");
+  }
+
+  //mat-input-0
+  static get inputInSearchQuery(){
+    return cy.get("input#mat-input-0");
+  }
 
 }
