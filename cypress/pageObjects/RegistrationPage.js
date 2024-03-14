@@ -29,8 +29,12 @@ export class RegistrationPage extends BasePage{
         return cy.get("#mat-option-12");
     }
 
-    //securityAnswerControl
     static get inputSecurityAnswer(){
         return cy.get("input#securityAnswerControl");
+    }
+
+    //registerButton
+    static get registerButton(){
+        return cy.get("button#registerButton");
     }
 }

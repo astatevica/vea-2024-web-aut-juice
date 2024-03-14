@@ -50,11 +50,17 @@ describe("Juice-shop scenarios", () => {
       // Fill in answer
       RegistrationPage.inputSecurityAnswer.type("Milka");
       // Click Register button
+      RegistrationPage.registerButton.click();
       // Set email value to previously created email
+      LoginPage.emailField.type(email);
       // Set password value to previously used password value
+      LoginPage.passwordField.type("1234567asdfg");
       // Click login button
+      LoginPage.loginButton.click();
       // Click Account button
+      HomePage.accountButton.click();
       // Validate that account name (with previously created email address) appears in the menu section
+      HomePage.profileMenuOption.should("contain", email);
     });
   });
 
