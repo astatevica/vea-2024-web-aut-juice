@@ -37,8 +37,18 @@ export class HomePage extends BasePage {
     return cy.get("[aria-label='Click for more information about the product']");
   }
 
-  //mat-dialog-6
   static get lemonFieldValidation(){
     return cy.get("[class='ng-star-inserted']");
   }
+
+  static get clickOnLemonButton(){
+    return cy.get("[alt='Lemon Juice (500ml)']");
+  }
+
+  static get justLemonFieldValidation(){
+    return cy.get("[class='ng-star-inserted']");
+  }
+
+
+
 }

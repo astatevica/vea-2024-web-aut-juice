@@ -70,7 +70,7 @@ describe("Juice-shop scenarios", () => {
       HomePage.visit();
     });
 
-    it.only("Search and validate Lemon", () => {
+    it("Search and validate Lemon", () => {
       // Click on search icon
       HomePage.searchQuery.click();
       // Search for Lemon
@@ -81,13 +81,28 @@ describe("Juice-shop scenarios", () => {
       // Validate that the card (should) contains "Sour but full of vitamins."
       HomePage.lemonFieldValidation.should("contain", "Sour but full of vitamins.");
     });
+  });
 
-    // Create scenario - Search 500ml and validate Lemon, while having multiple cards
-    // Click on search icon
-    // Search for 500ml
-    // Select a product card - Lemon Juice (500ml)
-    // Validate that the card (should) contains "Sour but full of vitamins."
 
+  context("With auto login", () => {
+    beforeEach(() => {
+      cy.login("demo", "demo");
+      HomePage.visit();
+    });
+
+    it.only("Search 500ml and validate Lemon", () => {
+      // Click on search icon
+      HomePage.searchQuery.click();
+      // Search for 500ml
+      HomePage.inputInSearchQuery.type("500ml");
+      cy.get('input').type('{enter}');
+      // Select a product card - Lemon Juice (500ml)
+      HomePage.clickOnLemonButton.click();
+      // Validate that the card (should) contains "Sour but full of vitamins."
+      HomePage.justLemonFieldValidation.should('contain', 'Sour but full of vitamins.');
+    });
+  
+    
     // Create scenario - Search 500ml and validate cards
     // Click on search icon
     // Search for 500ml
