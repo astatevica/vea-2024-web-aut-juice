@@ -2,6 +2,8 @@ import { BasketPage } from "../pageObjects/BasketPage";
 import { DeliveryMethodPage } from "../pageObjects/DeliveryMethodPage";
 import { HomePage } from "../pageObjects/HomePage";
 import { LoginPage } from "../pageObjects/LoginPage";
+import { OrderCompletionPage } from "../pageObjects/OrderCompletitionPage";
+import { OrderSummaryPage } from "../pageObjects/OrderSummaryPage";
 import { PaymentOptionsPage } from "../pageObjects/PaymentOptionsPage";
 import { RegistrationPage } from "../pageObjects/RegistrationPage";
 import { SelectAddressPage } from "../pageObjects/SelectAddressPage";
@@ -216,11 +218,13 @@ describe("Juice-shop scenarios", () => {
     // Select card that ends with "5678"
     PaymentOptionsPage.chooseCard.click();
     // Click Continue button
-    PaymentOptionsPage.pressContinue.click();
+    PaymentOptionsPage.exitOptions.contains("Continue").click();
     // Create page object - OrderSummaryPage
     // Click on "Place your order and pay"
+    OrderSummaryPage.placeOrder.click();
     // Create page object - OrderCompletionPage
     // Validate confirmation - "Thank you for your purchase!"
+    OrderCompletionPage.confirmation.should('contain', 'Thank you for your purchase!');
   });
 
     // Create scenario - Add address

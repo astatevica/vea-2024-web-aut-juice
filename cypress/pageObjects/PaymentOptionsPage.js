@@ -13,4 +13,8 @@ export class PaymentOptionsPage extends BasePage {
     return cy.get("button[class='mat-button-wrapper']");
   }
 
+  static get exitOptions(){
+    return cy.get("[class='mat-button-wrapper']"); 
+  }
+
 }
