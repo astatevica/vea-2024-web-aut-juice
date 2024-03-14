@@ -103,6 +103,11 @@ export class HomePage extends BasePage {
     return cy.get("[class='mat-grid-tile ng-star-inserted']");
   }
 
-  
+  static get addToBascet(){
+    return cy.get("button[aria-label='Add to Basket']");
+  }
 
+  static get clickOnBasket(){
+    return cy.get("button[class='mat-focus-indicator buttons mat-button mat-button-base ng-star-inserted']")
+  }
 }

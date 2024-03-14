@@ -1,6 +1,11 @@
+import { BasketPage } from "../pageObjects/BasketPage";
+import { DeliveryMethodPage } from "../pageObjects/DeliveryMethodPage";
 import { HomePage } from "../pageObjects/HomePage";
 import { LoginPage } from "../pageObjects/LoginPage";
+import { PaymentOptionsPage } from "../pageObjects/PaymentOptionsPage";
 import { RegistrationPage } from "../pageObjects/RegistrationPage";
+import { SelectAddressPage } from "../pageObjects/SelectAddressPage";
+import { BasePage } from "../pageObjects/basePage";
 
 describe("Juice-shop scenarios", () => {
   context("Without auto login", () => {
@@ -172,7 +177,7 @@ describe("Juice-shop scenarios", () => {
   });
 
     // Create scenario - Validate product card amount
-  it.only("Validate product card amount", () => {
+  it("Validate product card amount", () => {
     // Validate that the default amount of cards is 12
     HomePage.validateCards.should('have.length', 12);
     // Change items per page (at the bottom of page) to 24
@@ -183,26 +188,40 @@ describe("Juice-shop scenarios", () => {
     //HomePage.validateCards.should('have.length', 35);
   });
 
-    // Create scenario - Buy Girlie T-shirt
+  // Create scenariso - Buy Girlie T-shirt
+  it.only("Validate product card amount", () => {
     // Click on search icon
+    HomePage.searchQuery.click();
     // Search for Girlie
+    HomePage.inputInSearchQuery.type("Girlie");
+    cy.get('input').type('{enter}');
     // Add to basket "Girlie"
+    //HomePage.addToBascet.click();
     // Click on "Your Basket" button
+    HomePage.clickOnBasket.click();
     // Create page object - BasketPage
     // Click on "Checkout" button
+    BasketPage.clickOnCheckout.click();
     // Create page object - SelectAddressPage
     // Select address containing "United Fakedom"
+    SelectAddressPage.addressFakedom.click();
     // Click Continue button
+    SelectAddressPage.pressContinue.click();
     // Create page object - DeliveryMethodPage
     // Select delivery speed Standard Delivery
+    DeliveryMethodPage.deliveryOptions.contains("Standard Delivery").click();
     // Click Continue button
+    DeliveryMethodPage.clickContinue.click();
     // Create page object - PaymentOptionsPage
     // Select card that ends with "5678"
+    PaymentOptionsPage.chooseCard.click();
     // Click Continue button
+    PaymentOptionsPage.pressContinue.click();
     // Create page object - OrderSummaryPage
     // Click on "Place your order and pay"
     // Create page object - OrderCompletionPage
     // Validate confirmation - "Thank you for your purchase!"
+  });
 
     // Create scenario - Add address
     // Click on Account
