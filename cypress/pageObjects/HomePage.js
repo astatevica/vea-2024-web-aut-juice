@@ -29,9 +29,16 @@ export class HomePage extends BasePage {
     return cy.get("#searchQuery");
   }
 
-  //mat-input-0
   static get inputInSearchQuery(){
     return cy.get("input#mat-input-0");
   }
 
+  static get clickOnLemonButton(){
+    return cy.get("[aria-label='Click for more information about the product']");
+  }
+
+  //mat-dialog-6
+  static get lemonFieldValidation(){
+    return cy.get("[class='ng-star-inserted']");
+  }
 }

@@ -77,7 +77,9 @@ describe("Juice-shop scenarios", () => {
       HomePage.inputInSearchQuery.type("Lemon");
       cy.get('input').type('{enter}');
       // Select a product card - Lemon Juice (500ml)
+      HomePage.clickOnLemonButton.click();
       // Validate that the card (should) contains "Sour but full of vitamins."
+      HomePage.lemonFieldValidation.should("contain", "Sour but full of vitamins.");
     });
 
     // Create scenario - Search 500ml and validate Lemon, while having multiple cards
