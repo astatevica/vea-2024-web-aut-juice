@@ -69,4 +69,15 @@ export class HomePage extends BasePage {
     return cy.get("[class='ng-star-inserted']");
   }
 
+  static get clickOnKingOfTheHill(){
+    return cy.get("[class='mat-tooltip-trigger product']");
+  }
+
+  static get expandReviews(){
+    return cy.get("[aria-label='Expand for Reviews']");
+  }
+
+  static get validateARewiev(){
+    return cy.get("[class='mat-tooltip-trigger review-text']");
+  }
 }
