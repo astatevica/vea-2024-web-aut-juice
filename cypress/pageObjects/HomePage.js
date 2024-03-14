@@ -49,6 +49,24 @@ export class HomePage extends BasePage {
     return cy.get("[class='ng-star-inserted']");
   }
 
+  static get clickOnEgfruitJuice(){
+    return cy.get("[alt='Eggfruit Juice (500ml)']");
+  }
 
+  static get validateCardEgfruitJuice(){
+    return cy.get("[class='container mat-typography']");
+  }
+
+  static get closeCard(){
+    return cy.get("button[aria-label='Close Dialog']");
+  }
+
+  static get clickOnStrawberryJuice(){
+    return cy.get("[alt='Strawberry Juice (500ml)']");
+  }
+
+  static get validateCardStrawberryJuice(){
+    return cy.get("[class='ng-star-inserted']");
+  }
 
 }

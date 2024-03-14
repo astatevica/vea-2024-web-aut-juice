@@ -101,19 +101,38 @@ describe("Juice-shop scenarios", () => {
       // Validate that the card (should) contains "Sour but full of vitamins."
       HomePage.justLemonFieldValidation.should('contain', 'Sour but full of vitamins.');
     });
-  
-    
-    // Create scenario - Search 500ml and validate cards
+  });
+
+  // Create scenario - Search 500ml and validate cards
+  context("With auto login", () => {
+    beforeEach(() => {
+      cy.login("demo", "demo");
+      HomePage.visit();
+    });
+
+    it.only("Search 500ml and validate cards", () => {  
     // Click on search icon
+    HomePage.searchQuery.click();
     // Search for 500ml
+    HomePage.inputInSearchQuery.type("500ml");
+    cy.get('input').type('{enter}');
     // Select a product card - Eggfruit Juice (500ml)
+    HomePage.clickOnEgfruitJuice.click();
     // Validate that the card (should) contains "Now with even more exotic flavour."
+    HomePage.validateCardEgfruitJuice.should('contain','Now with even more exotic flavour.');
     // Close the card
+    HomePage.closeCard.click();
     // Select a product card - Lemon Juice (500ml)
+    HomePage.clickOnLemonButton.click();
     // Validate that the card (should) contains "Sour but full of vitamins."
+    HomePage.justLemonFieldValidation.should('contain', 'Sour but full of vitamins.');
     // Close the card
+    HomePage.closeCard.click();
     // Select a product card - Strawberry Juice (500ml)
+    HomePage.clickOnStrawberryJuice.click();
     // Validate that the card (should) contains "Sweet & tasty!"
+    HomePage.validateCardStrawberryJuice.should('contain', 'Sweet & tasty!');
+  });
 
     // Create scenario - Read a review
     // Click on search icon
