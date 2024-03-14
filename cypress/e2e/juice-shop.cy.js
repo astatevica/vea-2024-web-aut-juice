@@ -44,8 +44,11 @@ describe("Juice-shop scenarios", () => {
       RegistrationPage.inputPassword.type("1234567asdfg");
       RegistrationPage.inputRepeatPassword.type("1234567asdfg");
       // Click on Security Question menu
+      RegistrationPage.securityQuestionField.click();
       // Select  "Name of your favorite pet?"
+      RegistrationPage.getFavoritePetName.click();
       // Fill in answer
+      RegistrationPage.inputSecurityAnswer.type("Milka");
       // Click Register button
       // Set email value to previously created email
       // Set password value to previously used password value

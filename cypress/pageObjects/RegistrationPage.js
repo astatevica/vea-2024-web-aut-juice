@@ -20,4 +20,17 @@ export class RegistrationPage extends BasePage{
     static get inputRepeatPassword(){
         return cy.get("input#repeatPasswordControl");
     }
+
+    static get securityQuestionField(){
+        return cy.get("[name='securityQuestion']");
+    }
+
+    static get getFavoritePetName(){
+        return cy.get("#mat-option-12");
+    }
+
+    //securityAnswerControl
+    static get inputSecurityAnswer(){
+        return cy.get("input#securityAnswerControl");
+    }
 }
