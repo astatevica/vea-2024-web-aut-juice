@@ -98,4 +98,11 @@ export class HomePage extends BasePage {
     return cy.get("[class='mat-tooltip-trigger review-text']");
   }
 
+  //table-container custom-slate
+  static get validateCards(){
+    return cy.get("[class='mat-grid-tile ng-star-inserted']");
+  }
+
+  
+
 }
