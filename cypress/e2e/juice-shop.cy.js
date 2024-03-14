@@ -135,7 +135,7 @@ describe("Juice-shop scenarios", () => {
   });
 
   // Create scenario - Read a review
-  it.only("Read a review", () => {
+  it("Read a review", () => {
     // Click on search icon
     HomePage.searchQuery.click();
     // Search for King
@@ -150,14 +150,26 @@ describe("Juice-shop scenarios", () => {
     HomePage.validateARewiev.should('contain', 'K33p5 y0ur ju1cy 5plu773r 70 y0ur53lf!');
   });
 
-    // Create scenario - Add a review
+  // Create scenario - Add a review
+  it.only("Add a review", () => {
     // Click on search icon
+    HomePage.searchQuery.click();
     // Search for Raspberry
+    HomePage.inputInSearchQuery.type("Raspberry");
+    cy.get('input').type('{enter}');
     // Select a product card - Raspberry Juice (1000ml)
+    HomePage.clickOnRaspberryButton.click();
     // Type in review - "Tastes like metal"
+    HomePage.writeAReview.type("Tastes like metal");
+    //cy.wait(150);
     // Click Submit
+    HomePage.clickSubbmit.click();
     // Click expand reviews button/icon (wait for reviews to appear)
+    HomePage.expandReviews.click();
+    //cy.wait(150);
     // Validate review -  "Tastes like metal"
+    HomePage.validateRaspberryRewiev.should('contain', 'Tastes like metal');
+  });
 
     // Create scenario - Validate product card amount
     // Validate that the default amount of cards is 12

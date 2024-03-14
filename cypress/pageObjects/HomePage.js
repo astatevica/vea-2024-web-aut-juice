@@ -80,4 +80,22 @@ export class HomePage extends BasePage {
   static get validateARewiev(){
     return cy.get("[class='mat-tooltip-trigger review-text']");
   }
+
+  static get clickOnRaspberryButton(){
+    return cy.get("[alt='Raspberry Juice (1000ml)']");
+  }
+
+  //mat-input-30
+  static get writeAReview(){
+    return cy.get("textarea[aria-label='Text field to review a product']");
+  }
+
+  static get clickSubbmit(){
+    return cy.get("button#submitButton");
+  }
+
+  static get validateRaspberryRewiev(){
+    return cy.get("[class='mat-tooltip-trigger review-text']");
+  }
+
 }
