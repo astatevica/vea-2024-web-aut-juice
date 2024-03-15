@@ -8,6 +8,7 @@ import { OrderSummaryPage } from "../pageObjects/OrderSummaryPage";
 import { PaymentOptionsPage } from "../pageObjects/PaymentOptionsPage";
 import { RegistrationPage } from "../pageObjects/RegistrationPage";
 import { SaivedAddressesPage } from "../pageObjects/SaivedAddressesPage";
+import { SavedPaymentMethodsPage } from "../pageObjects/SavedPaymentMethodsPage";
 import { SelectAddressPage } from "../pageObjects/SelectAddressPage";
 import { BasePage } from "../pageObjects/basePage";
 
@@ -230,7 +231,7 @@ describe("Juice-shop scenarios", () => {
   });
 
     // Create scenario - Add address
-    it.only("Validate product card amount", () => {
+    it("Add address", () => {
     // Click on Account
     HomePage.accountButton.click();
     // Click on Orders & Payment
@@ -254,17 +255,31 @@ describe("Juice-shop scenarios", () => {
     SaivedAddressesPage.validateNewAddresses.should('contain','Kullau (Uznovë)');
   });
 
-    // Create scenario - Add payment option
+   // Create scenario - Add payment option
+  it.only("Add payment option", () => {
     // Click on Account
+    HomePage.accountButton.click();
     // Click on Orders & Payment
+    HomePage.clickOnOrdersAndPayment.click();
     // Click on My payment options
+    HomePage.clickOnPaymentOptions.click();
     // Create page object - SavedPaymentMethodsPage
     // Click Add new card
+    SavedPaymentMethodsPage.addNewCard.click();
     // Fill in Name
+    SavedPaymentMethodsPage.fillNAme.type("Laura");
     // Fill in Card Number
+    SavedPaymentMethodsPage.fillCardNymber.type("1425362762189324");
     // Set expiry month to 7
+    SavedPaymentMethodsPage.selectExpiryMonth.select("7");
     // Set expiry year to 2090
+    SavedPaymentMethodsPage.selectExpiryYear.select("2090");
     // Click Submit button
+    SavedPaymentMethodsPage.submitButton.click()
     // Validate that the card shows up in the list
+    PaymentOptionsPage.validateInformation.should('contain', '9324');
+
+  });
+
   });
 });

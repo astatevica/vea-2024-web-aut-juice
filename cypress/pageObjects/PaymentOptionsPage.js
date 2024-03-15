@@ -17,4 +17,8 @@ export class PaymentOptionsPage extends BasePage {
     return cy.get("[class='mat-button-wrapper']"); 
   }
 
+  static get validateInformation(){
+    return cy.get("[class='ng-star-inserted']");
+  }
+
 }
