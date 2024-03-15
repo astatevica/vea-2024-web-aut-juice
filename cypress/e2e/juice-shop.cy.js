@@ -1,4 +1,5 @@
 import { BasketPage } from "../pageObjects/BasketPage";
+import { CreateAddressPage } from "../pageObjects/CreateAddressesPage";
 import { DeliveryMethodPage } from "../pageObjects/DeliveryMethodPage";
 import { HomePage } from "../pageObjects/HomePage";
 import { LoginPage } from "../pageObjects/LoginPage";
@@ -6,6 +7,7 @@ import { OrderCompletionPage } from "../pageObjects/OrderCompletitionPage";
 import { OrderSummaryPage } from "../pageObjects/OrderSummaryPage";
 import { PaymentOptionsPage } from "../pageObjects/PaymentOptionsPage";
 import { RegistrationPage } from "../pageObjects/RegistrationPage";
+import { SaivedAddressesPage } from "../pageObjects/SaivedAddressesPage";
 import { SelectAddressPage } from "../pageObjects/SelectAddressPage";
 import { BasePage } from "../pageObjects/basePage";
 
@@ -191,7 +193,7 @@ describe("Juice-shop scenarios", () => {
   });
 
   // Create scenariso - Buy Girlie T-shirt
-  it.only("Validate product card amount", () => {
+  it("Validate product card amount", () => {
     // Click on search icon
     HomePage.searchQuery.click();
     // Search for Girlie
@@ -228,15 +230,29 @@ describe("Juice-shop scenarios", () => {
   });
 
     // Create scenario - Add address
+    it.only("Validate product card amount", () => {
     // Click on Account
+    HomePage.accountButton.click();
     // Click on Orders & Payment
+    HomePage.clickOnOrdersAndPayment.click();
     // Click on My saved addresses
+    HomePage.clickOnMySavedAddresses.click();
     // Create page object - SavedAddressesPage
     // Click on Add New Address
+    SaivedAddressesPage.clickAddNewAddresses.click();
     // Create page object - CreateAddressPage
     // Fill in the necessary information
+    CreateAddressPage.getCountry.type("Albania");
+    CreateAddressPage.getName.type("Laura");
+    CreateAddressPage.getNumber.type("73256483");
+    CreateAddressPage.getZipCode.type("5001");
+    CreateAddressPage.getAddress.type("Kullau (Uznovë)");
+    CreateAddressPage.getCity.type("Berat");
     // Click Submit button
+    CreateAddressPage.clickSubmit.click();
     // Validate that previously added address is visible
+    SaivedAddressesPage.validateNewAddresses.should('contain','Kullau (Uznovë)');
+  });
 
     // Create scenario - Add payment option
     // Click on Account

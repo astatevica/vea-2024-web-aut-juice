@@ -98,7 +98,6 @@ export class HomePage extends BasePage {
     return cy.get("[class='mat-tooltip-trigger review-text']");
   }
 
-  //table-container custom-slate
   static get validateCards(){
     return cy.get("[class='mat-grid-tile ng-star-inserted']");
   }
@@ -110,4 +109,13 @@ export class HomePage extends BasePage {
   static get clickOnBasket(){
     return cy.get("button[class='mat-focus-indicator buttons mat-button mat-button-base ng-star-inserted']")
   }
+
+  static get clickOnOrdersAndPayment(){
+    return cy.get("button[aria-label='Show Orders and Payment Menu']");
+  }
+
+  static get clickOnMySavedAddresses(){
+    return cy.get("button[aria-label='Go to saved address page']");
+  }
+
 }
